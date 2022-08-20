@@ -1,19 +1,22 @@
 {
-  "name": "penthouse",
+  "name": "@aguidrevitch/penthouse",
   "description": "Generate critical path CSS for web pages",
-  "version": "2.3.3",
-  "homepage": "https://github.com/pocketjoso/penthouse",
+  "version": "2.3.3-spo",
+  "homepage": "https://github.com/aguidrevitch/penthouse",
   "author": {
     "name": "Jonas Ohlsson Aden",
     "email": "jonas.sebastian.ohlsson@gmail.com",
     "url": "https://jonassebastianohlsson.com"
   },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
+  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/pocketjoso/penthouse.git#master"
+    "url": "git://github.com/aguidrevitch/penthouse.git#master"
   },
   "bugs": {
-    "url": "https://github.com/pocketjoso/penthouse/issues"
+    "url": "https://github.com/aguidrevitch/penthouse/issues"
   },
   "license": "MIT",
   "main": "./lib/index.js",
@@ -37,7 +40,7 @@
   },
   "dependencies": {
     "css-mediaquery": "^0.1.2",
-    "css-tree": "^2.0.0",
+    "css-tree": "1.0.0-alpha.28",
     "debug": "^4.1.1",
     "jsesc": "^2.5.2",
     "puppeteer": "2.1.1"

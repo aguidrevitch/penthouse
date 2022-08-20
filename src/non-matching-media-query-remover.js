@@ -57,12 +57,16 @@ function _isMatchingMediaQuery (mediaQuery, matchConfig) {
       } else {
         if (mq.expressions.length > 1) {
           const constructedQuery = mq.expressions
-            .map(
-              ({ modifier, feature, value }) =>
-                `(${modifier}-${feature}: ${value})`
-            )
+            .map(({ modifier, feature, value }) => {
+              if ((feature || '').match(/device-pixel-ratio$/)) {
+                return
+              }
+              return `(${modifier}-${feature}: ${value})`
+            })
+            .filter(i => i)
             .join(' and ')
           // css-mediaquery does not match inversed queries correctly, hence the if..else below
+
           if (!isInverse) {
             return cssMediaQuery.match(constructedQuery, matchConfig)
           } else {
