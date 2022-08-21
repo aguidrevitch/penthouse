@@ -89,7 +89,6 @@ function nonMatchingMediaQueryRemover (
 ) {
   debuglog('BEFORE')
   if (keepLargerMediaQueries) {
-    console.log(matchConfigs)
     matchConfigs.push({
       type: 'screen',
       width: '99999px',
