@@ -155,7 +155,11 @@ async function preparePage ({
   // update it here.
   let setViewportPromise = Promise.resolve()
   const currentViewport = page.viewport()
-  if (!currentViewport || currentViewport.width !== width || currentViewport.height !== height) {
+  if (
+    !currentViewport ||
+    currentViewport.width !== width ||
+    currentViewport.height !== height
+  ) {
     setViewportPromise = page
       .setViewport({ width, height })
       .then(() => debuglog('viewport size updated'))
@@ -386,7 +390,11 @@ async function pruneNonCriticalCssLauncher ({
     // Strip out non matching media queries.
     // Need to be done before buildSelectorProfile;
     // (very fast but could be done together/in parallel in future)
-    nonMatchingMediaQueryRemover(ast, width, height, keepLargerMediaQueries)
+    nonMatchingMediaQueryRemover(
+      ast,
+      [{ media: 'screen', width: `${width}px`, height: `${height}px` }],
+      keepLargerMediaQueries
+    )
     debuglog('stripped out non matching media queries')
 
     // -> [BLOCK FOR] page preparation

@@ -8,8 +8,7 @@ function testMediaQueryRemoval (tests, width, height, keepLargerMediaQueries) {
       const ast = csstree.parse(ruleCss)
       const matchingRules = nonMatchingMediaQueryRemover(
         ast,
-        width,
-        height,
+        [{ media: 'screen', width: `${width}px`, height: `${height}px`}],
         keepLargerMediaQueries
       ).children.toArray()
 

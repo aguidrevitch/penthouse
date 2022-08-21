@@ -84,24 +84,21 @@ function _isMatchingMediaQuery (mediaQuery, matchConfig) {
 
 function nonMatchingMediaQueryRemover (
   ast,
-  width,
-  height,
+  matchConfigs,
   keepLargerMediaQueries = false
 ) {
   debuglog('BEFORE')
-  const matchConfig = {
-    type: 'screen',
-    width: width + 'px',
-    height: height + 'px'
-  }
-  const matchLargerMQConfig = {
-    type: 'screen',
-    width: '99999px',
-    height: '99999px'
+  if (keepLargerMediaQueries) {
+    console.log(matchConfigs)
+    matchConfigs.push({
+      type: 'screen',
+      width: '99999px',
+      height: '99999px'
+    })
   }
   debuglog(
-    'matchConfig: ' +
-      JSON.stringify(matchConfig, null, 2) +
+    'matchConfigs: ' +
+      JSON.stringify(matchConfigs, null, 2) +
       '\n' +
       'keepLargerMediaQueries: ' +
       keepLargerMediaQueries
@@ -122,10 +119,10 @@ function nonMatchingMediaQueryRemover (
       const mediaQuery = csstree.generate(atrule.prelude)
       // ismatching true when mq must be kept
       // if keep larger mq, keep if matching OR matching matchKeepLargeConfig
-      const isMatching = keepLargerMediaQueries
-        ? _isMatchingMediaQuery(mediaQuery, matchConfig) ||
-          _isMatchingMediaQuery(mediaQuery, matchLargerMQConfig)
-        : _isMatchingMediaQuery(mediaQuery, matchConfig)
+      const isMatching =
+        matchConfigs.filter(matchConfig =>
+          _isMatchingMediaQuery(mediaQuery, matchConfig)
+        ).length > 0
       if (!isMatching) {
         debuglog('DROP: ' + `(${mediaQuery}), `)
         list.remove(item)

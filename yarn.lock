@@ -1615,13 +1615,13 @@
   "resolved" "https://registry.npmjs.org/css-mediaquery/-/css-mediaquery-0.1.2.tgz"
   "version" "0.1.2"
 
-"css-tree@^2.0.0":
-  "integrity" "sha512-OA0mILzGc1kCOCSJerOeqDxDQ4HOh+G8NbOJFOTgOCzpw7fCBubk0fEyxp8AgOL/jvLgYA/uV0cMbe43ElF1JA=="
-  "resolved" "https://registry.npmjs.org/css-tree/-/css-tree-2.2.1.tgz"
-  "version" "2.2.1"
+"css-tree@1.0.0-alpha.28":
+  "integrity" "sha512-joNNW1gCp3qFFzj4St6zk+Wh/NBv0vM5YbEreZk0SD4S23S+1xBKb6cLDg2uj4P4k/GUMlIm6cKIDqIG+vdt0w=="
+  "resolved" "https://registry.npmjs.org/css-tree/-/css-tree-1.0.0-alpha.28.tgz"
+  "version" "1.0.0-alpha.28"
   dependencies:
-    "mdn-data" "2.0.28"
-    "source-map-js" "^1.0.1"
+    "mdn-data" "~1.1.0"
+    "source-map" "^0.5.3"
 
 "cssom@>= 0.3.2 < 0.4.0", "cssom@0.3.x":
   "integrity" "sha512-N72oNABuYrOUdPYkT64J8mvYNxFU35kU4Zer3N69aWz4AylPUlSiS/75J+VMAMz9OFf+TTrN3UBrPbcEegOqtg=="
@@ -3775,10 +3775,10 @@
   dependencies:
     "object-visit" "^1.0.0"
 
-"mdn-data@2.0.28":
-  "integrity" "sha512-aylIc7Z9y4yzHYAJNuESG3hfhC+0Ibp/MAMiaOZgNv4pmEdFyfZhhhny4MNiAfWdBQ1RQ2mfDWmM1x8SvGyp8g=="
-  "resolved" "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.28.tgz"
-  "version" "2.0.28"
+"mdn-data@~1.1.0":
+  "integrity" "sha512-FSYbp3lyKjyj3E7fMl6rYvUdX0FBXaluGqlFoYESWQlyUTq8R+wp0rkFxoYFqZlHCvsUXGjyJmLQSnXToYhOSA=="
+  "resolved" "https://registry.npmjs.org/mdn-data/-/mdn-data-1.1.4.tgz"
+  "version" "1.1.4"
 
 "merge-stream@^2.0.0":
   "integrity" "sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w=="
@@ -5019,11 +5019,6 @@
     "source-map-resolve" "^0.5.0"
     "use" "^3.1.0"
 
-"source-map-js@^1.0.1":
-  "integrity" "sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw=="
-  "resolved" "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz"
-  "version" "1.0.2"
-
 "source-map-resolve@^0.5.0":
   "integrity" "sha512-MjqsvNwyz1s0k81Goz/9vRBe9SZdB09Bdw+/zYyO+3CuPk6fouTaxscHkgtE8jKvf01kVfl8riHzERQ/kefaSA=="
   "resolved" "https://registry.npmjs.org/source-map-resolve/-/source-map-resolve-0.5.2.tgz"
@@ -5048,7 +5043,7 @@
   "resolved" "https://registry.npmjs.org/source-map-url/-/source-map-url-0.4.0.tgz"
   "version" "0.4.0"
 
-"source-map@^0.5.0", "source-map@^0.5.6":
+"source-map@^0.5.0", "source-map@^0.5.3", "source-map@^0.5.6":
   "integrity" "sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ=="
   "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.5.7.tgz"
   "version" "0.5.7"
