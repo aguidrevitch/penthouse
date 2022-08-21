@@ -1,7 +1,7 @@
 {
   "name": "@aguidrevitch/penthouse",
   "description": "Generate critical path CSS for web pages",
-  "version": "2.3.3-spo.2",
+  "version": "2.3.3-spo.3",
   "homepage": "https://github.com/aguidrevitch/penthouse",
   "author": {
     "name": "Jonas Ohlsson Aden",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "css-mediaquery": "^0.1.2",
-    "css-tree": "1.0.0-alpha.28",
+    "css-tree": "^1",
     "debug": "^4.1.1",
     "jsesc": "^2.5.2",
     "puppeteer": "2.1.1"
