@@ -1,7 +1,7 @@
 {
   "name": "@aguidrevitch/penthouse",
   "description": "Generate critical path CSS for web pages",
-  "version": "2.3.3-spo.4",
+  "version": "2.3.3-spo.5",
   "homepage": "https://github.com/aguidrevitch/penthouse",
   "author": {
     "name": "Jonas Ohlsson Aden",
@@ -43,7 +43,7 @@
     "css-tree": "^2",
     "debug": "^4.1.1",
     "jsesc": "^2.5.2",
-    "puppeteer": "2.1.1"
+    "puppeteer": "^16"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
