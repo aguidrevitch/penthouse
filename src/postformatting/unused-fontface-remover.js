@@ -12,6 +12,29 @@ function decodeFontName (node) {
   return name
 }
 
+const variables = {}
+
+function recurse (node) {
+  const result = []
+  if (node.type === 'String') {
+    result.push(node.value)
+  } else if (node.type === 'Identifier') {
+    let matches
+    if ((matches = node.name.match(/^(--.*)/)) && variables[matches[0]]) {
+      ;[...variables[matches[0]]].forEach(value => result.push(value))
+    } else {
+      result.push(node.name)
+    }
+  } else if (node.children) {
+    node.children.forEach(node => {
+      result.push(...recurse(node))
+    })
+  } else {
+    // debuglog('warn 2', csstree.walk.generate(node), node)
+  }
+  return result
+}
+
 function getAllFontNameValues (ast) {
   const fontNameValues = new Set()
 
@@ -21,24 +44,34 @@ function getAllFontNameValues (ast) {
     enter: function (node) {
       // walker pass through `font-family` declarations inside @font-face too
       // this condition filters them, to walk through declarations inside a rules only
+      if (node.property.match(/^--/)) {
+        variables[node.property] = variables[node.property] || new Set()
+        if (node.value.children) {
+          node.value.children
+            .filter(value => value.type !== 'Operator')
+            .forEach(value => {
+              // probably not exactly right because quotes are stripped in decodeFontName
+              // for values different than font family but it is fine, we only need font-family
+              variables[node.property].add(decodeFontName(value))
+            })
+        } else {
+          // probably not exactly right because quotes are stripped in decodeFontName
+          // for values different than font family but it is fine, we only need font-family
+          variables[node.property].add(decodeFontName(node.value))
+        }
+        return
+      }
+
       if (this.rule) {
-        csstree.lexer
-          .findDeclarationValueFragments(node, 'Type', 'family-name')
-          .forEach(entry => {
-            const familyName = decodeFontName({
-              type: 'Value',
-              children: entry.nodes
-            }).toLowerCase()
-            if (!fontNameValues.has(familyName)) {
-              debuglog('found used font-family: ' + familyName)
-              fontNameValues.add(familyName)
-            }
-          })
+        if (node.property === 'font-family') {
+          recurse(node.value).forEach(value =>
+            fontNameValues.add(value.toLowerCase())
+          )
+        }
       }
     }
   })
   debuglog('getAllFontNameValues AFTER')
-
   return fontNameValues
 }
 

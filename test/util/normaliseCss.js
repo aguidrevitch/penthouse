@@ -1,7 +1,7 @@
 import csstree from 'css-tree'
 
 function parseCssAst (css) {
-  return csstree.parse(css)
+  return csstree.parse(css, { parseCustomProperty: true })
 }
 // because dont want to fail tests on white space differences
 export default function normaliseCss (css) {

@@ -99,6 +99,23 @@ describe('penthouse core tests', () => {
       })
   })
 
+  /* - Case 1.1: @-rule with CSS properties inside [REMAIN]
+   (NOTE: @font-face, @keyframes are removed later in code, unless they are used.
+   Therefor currently this test has to include CSS 'using' the @font-face|@keyframes)
+   */
+  it('should keep complete case 1.1 @-rules (@font-face, @keyframes)', () => {
+    var atRuleCase1dot1RemainCssFilePath = path.join(__dirname, 'static-server', 'at-rule-case-1.1--remain.css')
+    var atRuleCase1dot1RemainCss = read(atRuleCase1dot1RemainCssFilePath).toString()
+
+    return penthouse({
+      url: page1FileUrl,
+      css: atRuleCase1dot1RemainCssFilePath
+    })
+      .then(result => {
+        expect(result).toEqual(normaliseCss(atRuleCase1dot1RemainCss))
+      })
+  })
+
   /* Case 2: @-rule with CSS properties inside [REMOVE]
    @page
    */

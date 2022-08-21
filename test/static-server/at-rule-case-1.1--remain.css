@@ -1,0 +1,25 @@
+:root {
+  --fontFamily: "Lato web";
+}
+
+@font-face {
+    font-family: 'Lato web';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/Lato-Regular.eot');
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+}
+@viewport {
+   width: device-width;
+}
+@media screen and (max-width:400px) {
+   @-ms-viewport { width: 320px; }
+}
+html {
+	font-family: var(--fontFamily);
+  animation: fade-in;
+}

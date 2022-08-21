@@ -104,7 +104,8 @@ async function astFromCss ({ cssString, strict }) {
   const parsingErrors = []
   debuglog('parse ast START')
   const ast = csstree.parse(css, {
-    onParseError: error => parsingErrors.push(error.formattedMessage)
+    onParseError: error => parsingErrors.push(error.formattedMessage),
+    parseCustomProperty: true
   })
   debuglog(`parse ast DONE (with ${parsingErrors.length} errors)`)
 
