@@ -67,6 +67,10 @@ function getAllFontNameValues (ast) {
           recurse(node.value).forEach(value =>
             fontNameValues.add(value.toLowerCase())
           )
+        } else if (node.property === 'font') {
+          recurse(node.value.children.last).forEach(value =>
+            fontNameValues.add(value.toLowerCase())
+          )
         }
       }
     }
