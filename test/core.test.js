@@ -108,7 +108,7 @@ describe('penthouse core tests', () => {
     var atRuleCase1dot1RemainCss = read(atRuleCase1dot1RemainCssFilePath).toString()
 
     return penthouse({
-      url: page1FileUrl,
+      url: staticServerFileUrl('page1.1.html'),
       css: atRuleCase1dot1RemainCssFilePath
     })
       .then(result => {

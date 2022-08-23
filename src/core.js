@@ -1,6 +1,7 @@
 import csstree from 'css-tree'
 import debug from 'debug'
 import pruneNonCriticalSelectors from './browser-sandbox/pruneNonCriticalSelectors'
+import getUsedFonts from './browser-sandbox/getUsedFonts'
 import replacePageCss from './browser-sandbox/replacePageCss'
 import cleanupAst from './postformatting'
 import buildSelectorProfile from './selectors-profile'
@@ -486,7 +487,7 @@ async function pruneNonCriticalCssLauncher ({
     }
 
     // -> [BLOCK FOR] critical css selector pruning (in browser)
-    let criticalSelectors
+    let criticalSelectors, usedFonts
     try {
       criticalSelectors = await page
         .evaluate(pruneNonCriticalSelectors, {
@@ -498,6 +499,10 @@ async function pruneNonCriticalCssLauncher ({
           debuglog('pruneNonCriticalSelectors done')
           return criticalSelectors
         })
+      usedFonts = await page.evaluate(getUsedFonts).then(usedFonts => {
+        debuglog('getUsedFonts done')
+        return new Set(usedFonts)
+      })
     } catch (err) {
       debuglog('pruneNonCriticalSelector threw an error: ' + err)
       const errorDueToPageUnloaded = PUPPETEER_PAGE_UNLOADED_DURING_EXECUTION_ERROR_REGEX.test(
@@ -523,7 +528,8 @@ async function pruneNonCriticalCssLauncher ({
       selectorNodeMap,
       criticalSelectors,
       propertiesToRemove,
-      maxEmbeddedBase64Length
+      maxEmbeddedBase64Length,
+      usedFonts
     })
     debuglog('AST cleanup DONE')
 

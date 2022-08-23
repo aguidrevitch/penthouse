@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style>
+        :root {
+            --fontFamily: "Lato web";
+        }
+
+        @font-face {
+            font-family: 'Lato web';
+            font-style: normal;
+            font-weight: 400;
+            src: url('fonts/Lato-Regular.eot');
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+        }
+
+        @viewport {
+            width: device-width;
+        }
+
+        @media screen and (max-width:400px) {
+            @-ms-viewport {
+                width: 320px;
+            }
+        }
+
+        html {
+            font-family: var(--fontFamily);
+            animation: fade-in;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">Box 1
+        <div id="box11">Box 1.1</div>
+    </div>
+    <div id="box2">Box 2
+        <div id="box21">Box 2.1</div>
+        <div id="box22">Box 2.2</div>
+    </div>
+</body>
+
+</html>

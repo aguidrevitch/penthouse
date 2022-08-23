@@ -16,7 +16,8 @@ export default function cleanup ({
   selectorNodeMap,
   criticalSelectors,
   propertiesToRemove,
-  maxEmbeddedBase64Length
+  maxEmbeddedBase64Length,
+  usedFonts
 }) {
   debuglog('start')
 
@@ -34,7 +35,7 @@ export default function cleanup ({
   debuglog('embeddedbase64Remover')
 
   // remove bad and unused @fontface rules
-  unusedFontFaceRemover(ast)
+  unusedFontFaceRemover(ast, usedFonts)
   debuglog('unusedFontFaceRemover')
 
   // remove irrelevant css properties via rule walking
