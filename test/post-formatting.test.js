@@ -80,7 +80,7 @@ describe('penthouse post formatting tests', () => {
 
     const ast = csstree.parse(originalCss)
 
-    ffRemover(ast)
+    ffRemover(ast, new Set())
 
     expect(csstree.generate(ast)).toEqual(normaliseCss(expectedCss))
   })
